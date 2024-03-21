@@ -7,10 +7,10 @@ public abstract class BinaryOperator implements Term{
 
 	public BinaryOperator(Term termOne, Term termTwo) {
 		if (termOne == null) {
-			throw new IllegalArgumentException("left term cannot be null");
+			throw new IllegalArgumentException("Left term cannot be null");
 		}
 		else if (termTwo == null) {
-			throw new IllegalArgumentException("right term cannot be null");
+			throw new IllegalArgumentException("Right term cannot be null");
 		}
 		else {
 			this.term1 = termOne;

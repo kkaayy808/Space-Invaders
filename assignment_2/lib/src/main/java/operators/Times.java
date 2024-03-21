@@ -2,19 +2,21 @@ package operators;
 
 public class Times extends BinaryOperator{
 	
-	private Term firstTerm;
-	private Term secondTerm;
+//	private Term firstTerm;
+//	private Term secondTerm;
 
 	public Times(Term termOne, Term termTwo) {
 		super(termOne, termTwo);
-		this.firstTerm = termOne;
-		this.secondTerm = termTwo;
+//		this.firstTerm = termOne;
+//		this.secondTerm = termTwo;
 	}
 	
 	public int getValue() {
 		
-		int val1 = firstTerm.getValue();
-		int val2 = secondTerm.getValue();
+//		int val1 = term1.getValue();
+//		int val2 = term2.getValue();
+		int val1 = super.getLeft().getValue();
+		int val2 = super.getRight().getValue();
 		return val1 * val2;
 		
 	}
