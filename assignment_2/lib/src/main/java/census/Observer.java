@@ -1,5 +1,7 @@
 package census;
 
-public class Observer {
+public interface Observer {
+	
+	void update(Observable ob);
 
 }

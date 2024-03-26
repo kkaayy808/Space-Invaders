@@ -1,5 +1,9 @@
 package census;
 
-public class Observable {
+public interface Observable {
+	
+	boolean addObserver(Observer ob);
+	boolean removeObserver(Observer ob);
+	boolean hasObservers();
 
 }
