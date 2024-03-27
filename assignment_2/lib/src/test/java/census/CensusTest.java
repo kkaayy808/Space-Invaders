@@ -86,5 +86,26 @@ class CensusTest {
 		assertEquals(office1.getNumber(), 1);
 	}
 	
+	@Test
+    void testNameGetter() {
+        City city = new City("New York", "NY", 8000000);
+        String cityName = city.getName();
+        assertEquals("New York", cityName);
+    }
+    
+    @Test
+    void testStateGetter() {
+        City city = new City("New York", "NY", 8000000);
+        String state = city.getState();
+        assertEquals("NY", state);
+    }
+    
+    @Test
+    void testPopulationGetter() {
+        City city = new City("New York", "NY", 8000000);
+        int population = city.getPopulation();
+        assertEquals(8000000, population);
+    }
+	
 
 }
