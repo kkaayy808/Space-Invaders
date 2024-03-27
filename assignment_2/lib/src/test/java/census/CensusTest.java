@@ -106,6 +106,10 @@ class CensusTest {
         int population = city.getPopulation();
         assertEquals(8000000, population);
     }
-	
-
+    
+    @Test
+    public void testGetLastCityWhenNoUpdate() {
+    	LastCity lastCity = new LastCity();
+        assertNull(lastCity.getLastCity());
+    }
 }

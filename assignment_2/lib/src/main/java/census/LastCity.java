@@ -30,7 +30,10 @@ public class LastCity implements Observer{
 	}
 	
 	public City getLastCity() {
-		return cityList.getLast();
+		if (cityList.isEmpty()) {
+			return null;
+		}
+		return cityList.get(cityList.size() - 1);
 	}
 
 	public CensusOffice getLastOffice() {
