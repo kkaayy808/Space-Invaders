@@ -2,6 +2,9 @@ package census;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -135,5 +138,32 @@ class CensusTest {
         lastCity.update(office1);
         lastCity.update(office2);
         assertEquals(city2, lastCity.getLastCity());
+    }
+    
+    @Test
+    public void testGetTopFiveCitiesAfterUpdates() {
+        TopFiveCities topFiveCities = new TopFiveCities();
+        CensusOffice office1 = new CensusOffice(1);
+        CensusOffice office2 = new CensusOffice(2);
+        CensusOffice office3 = new CensusOffice(3);
+        CensusOffice office4 = new CensusOffice(4);
+        CensusOffice office5 = new CensusOffice(5);
+        City city1 = new City("City1", "State1", 1000);
+        City city2 = new City("City2", "State2", 2000);
+        City city3 = new City("City3", "State3", 3000);
+        City city4 = new City("City4", "State4", 4000);
+        City city5 = new City("City5", "State5", 5000);
+        office1.report(city1);
+        office2.report(city2);
+        office3.report(city3);
+        office4.report(city4);
+        office5.report(city5);
+        topFiveCities.update(office1);
+        topFiveCities.update(office2);
+        topFiveCities.update(office3);
+        topFiveCities.update(office4);
+        topFiveCities.update(office5);
+        List<City> expectedTopFive = Arrays.asList(city5, city4, city3, city2, city1);
+        assertEquals(expectedTopFive, topFiveCities.getTopFive());
     }
 }
