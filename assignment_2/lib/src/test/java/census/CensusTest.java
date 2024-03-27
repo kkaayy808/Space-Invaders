@@ -8,72 +8,72 @@ import org.junit.jupiter.api.Test;
 
 class CensusTest {
 
-//	private CensusOffice censusOffice;
-//    private TestObserver observer;
-//
-//    @BeforeEach
-//    public void setUp() {
-//        censusOffice = new CensusOffice(1);
-//        observer = new TestObserver();
-//    }
-//
-//    @Test
-//    public void testAddObserver() {
-//        assertTrue(censusOffice.addObserver(observer));
-//        assertTrue(censusOffice.hasObservers());
-//    }
-//
-//    @Test
-//    public void testAddDuplicateObserver() {
-//        censusOffice.addObserver(observer);
-//        assertFalse(censusOffice.addObserver(observer));
-//    }
-//
-//    @Test
-//    public void testRemoveObserver() {
-//        censusOffice.addObserver(observer);
-//        assertTrue(censusOffice.removeObserver(observer));
-//        assertFalse(censusOffice.hasObservers());
-//    }
-//
-//    @Test
-//    public void testRemoveNonExistingObserver() {
-//        assertFalse(censusOffice.removeObserver(observer));
-//    }
-//
-//    @Test
-//    public void testReport() {
-//        censusOffice.addObserver(observer);
-//        City city = new City("New York", 1000000);
-//        censusOffice.report(city);
-//        assertEquals(city, censusOffice.getReported());
-//        assertEquals(1, observer.getUpdateCount());
-//    }
-//
-//    @Test
-//    public void testReportNoObservers() {
-//        City city = new City("Los Angeles", 1500000);
-//        censusOffice.report(city);
-//        assertEquals(city, censusOffice.getReported());
-//    }
-//
-//    @Test
-//    public void testGetNumber() {
-//        assertEquals(1, censusOffice.getNumber());
-//    }
-//
-//    private static class TestObserver implements Observer {
-//        private int updateCount;
-//
-//        @Override
-//        public void update(Observable ob) {
-//            updateCount++;
-//        }
-//
-//        public int getUpdateCount() {
-//            return updateCount;
-//        }
-//    }
+	private CensusOffice censusOffice;
+    private TestObserver observer;
+
+    @BeforeEach
+    public void setUp() {
+        censusOffice = new CensusOffice(1);
+        observer = new TestObserver();
+    }
+    
+    private static class TestObserver implements Observer {
+        private int updateCount;
+
+        @Override
+        public void update(Observable ob) {
+            updateCount++;
+        }
+
+        public int getUpdateCount() {
+            return updateCount;
+        }
+    }
+
+    @Test
+    public void testAddObserver() {
+        assertTrue(censusOffice.addObserver(observer));
+        assertTrue(censusOffice.hasObservers());
+    }
+
+    @Test
+    public void testAddDuplicateObserver() {
+        censusOffice.addObserver(observer);
+        assertFalse(censusOffice.addObserver(observer));
+    }
+
+    @Test
+    public void testRemoveObserver() {
+        censusOffice.addObserver(observer);
+        assertTrue(censusOffice.removeObserver(observer));
+        assertFalse(censusOffice.hasObservers());
+    }
+
+    @Test
+    public void testRemoveNonExistingObserver() {
+        assertFalse(censusOffice.removeObserver(observer));
+    }
+
+    @Test
+    public void testReport() {
+        censusOffice.addObserver(observer);
+        City city = new City("New York", "NY", 1000000);
+        censusOffice.report(city);
+        assertEquals(city, censusOffice.getReported());
+        assertEquals(1, observer.getUpdateCount());
+    }
+
+    @Test
+    public void testReportNoObservers() {
+        City city = new City("Los Angeles", "CA", 1500000);
+        censusOffice.report(city);
+        assertEquals(city, censusOffice.getReported());
+    }
+
+    @Test
+    public void testGetNumber() {
+        assertEquals(1, censusOffice.getNumber());
+    }
 	
 	@Test
     public void testConstructorNegativeValue() {
