@@ -112,4 +112,28 @@ class CensusTest {
     	LastCity lastCity = new LastCity();
         assertNull(lastCity.getLastCity());
     }
+    
+    @Test
+    public void testGetLastCityAfterSingleUpdate() {
+        LastCity lastCity = new LastCity();
+        CensusOffice office = new CensusOffice(1);
+        City city = new City("City1", "State1", 1000);
+        office.report(city);
+        lastCity.update(office);
+        assertEquals(city, lastCity.getLastCity());
+    }
+
+    @Test
+    public void testGetLastCityAfterMultipleUpdates() {
+        LastCity lastCity = new LastCity();
+        CensusOffice office1 = new CensusOffice(1);
+        CensusOffice office2 = new CensusOffice(2);
+        City city1 = new City("City1", "State1", 1000);
+        City city2 = new City("City2", "State2", 2000);
+        office1.report(city1);
+        office2.report(city2);
+        lastCity.update(office1);
+        lastCity.update(office2);
+        assertEquals(city2, lastCity.getLastCity());
+    }
 }
