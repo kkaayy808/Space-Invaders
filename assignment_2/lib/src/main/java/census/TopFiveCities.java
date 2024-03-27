@@ -33,6 +33,9 @@ public class TopFiveCities implements Observer{
 		cityList.sort(Comparator.comparingInt(City::getPopulation));
 		
 		for(int i = 0; i < 5; i++ ) {
+			if (cityList.size() <= i) {
+				break;
+			}
 			topList.add(cityList.get(i));
 		}
 		
