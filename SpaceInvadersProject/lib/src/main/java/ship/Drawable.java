@@ -1,5 +1,5 @@
 package ship;
 
-public class Drawable {
+public abstract class Drawable {
 
 }

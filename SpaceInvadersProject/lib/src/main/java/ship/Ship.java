@@ -1,5 +1,5 @@
 package ship;
 
-public class Ship {
+public abstract class Ship extends Drawable{
 
 }

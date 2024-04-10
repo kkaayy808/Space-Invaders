@@ -1,5 +1,5 @@
 package ship;
 
-public class Invader {
+public abstract class Invader extends Ship{
 
 }
