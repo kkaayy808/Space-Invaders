@@ -1,10 +1,13 @@
 package ship;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class SpaceInvaders extends JFrame{
@@ -12,7 +15,13 @@ public class SpaceInvaders extends JFrame{
 	public SpaceInvaders() {
 		setTitle("Space Invaders");
 		setSize(500, 450);
-		
+		add(new JPanel() {
+			private Base base;
+			{
+			setBackground(Color.BLACK);
+			base = new Base(0,0);
+			}
+		});
 		var menu = new JMenuBar();
 		setJMenuBar(menu);
 		
