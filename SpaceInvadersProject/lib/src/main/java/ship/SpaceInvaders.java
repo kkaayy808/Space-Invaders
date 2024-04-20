@@ -1,6 +1,8 @@
 package ship;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,13 +17,23 @@ public class SpaceInvaders extends JFrame{
 	public SpaceInvaders() {
 		setTitle("Space Invaders");
 		setSize(500, 450);
+		//adds the Jpanel for the game
 		add(new JPanel() {
 			private Base base;
 			{
 			setBackground(Color.BLACK);
 			base = new Base(0,0);
 			}
+			
+			//draws the base
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				Graphics2D g2 = (Graphics2D) g;
+				base.draw(g2); 
+			}
 		});
+		
 		var menu = new JMenuBar();
 		setJMenuBar(menu);
 		
