@@ -18,6 +18,7 @@ public class Missile extends Drawable{
 			g2.fillRect(getX(),  getY(),  Width,  Height);
 		}
 		
+		//will have to alter this for missiles fired by the ships
 		public void move() {
 			setY(getY() - 5);
 		}

@@ -19,6 +19,7 @@ public class Panel extends JPanel{
 		setPreferredSize(new Dimension(500, 400));
 		setBackground(Color.BLACK);
 		setFocusable(true);
+		//I think this is what we will use to register hits and stuff not sure yet
 		addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -26,6 +27,7 @@ public class Panel extends JPanel{
             }
         });
 		
+		//basic timer
 		Timer timer = new Timer(20, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
