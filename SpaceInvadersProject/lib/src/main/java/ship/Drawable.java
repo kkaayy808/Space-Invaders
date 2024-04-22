@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public abstract class Drawable {
 	
@@ -42,10 +44,14 @@ public abstract class Drawable {
 		this.y = y;
 	}
 	
-	protected Image getImage(String filename) {
-		URL url = getClass().getResource(filename);
-		ImageIcon icon = new ImageIcon(url);
-		return icon.getImage();
+	protected Image getImage(String filename) throws IOException {
+		URL url = this.getClass().getResource(filename);
+//		ImageIcon icon = new ImageIcon(url);
+//		return icon.getImage();
+//		return new JLabel(icon);
+		
+		Image icon = ImageIO.read(url);
+		return icon;
 	}
 	
 	protected Clip getSound(String filename) {

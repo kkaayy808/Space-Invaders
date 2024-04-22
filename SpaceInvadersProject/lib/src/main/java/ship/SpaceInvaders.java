@@ -3,6 +3,7 @@ package ship;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +15,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class SpaceInvaders extends JFrame{
 	
-	public SpaceInvaders() {
+	public SpaceInvaders() throws IOException {
 		setTitle("Space Invaders");
 		setSize(500, 450);
 		//adds the Jpanel for the game
@@ -22,7 +23,7 @@ public class SpaceInvaders extends JFrame{
 			private Base base;
 			{
 			setBackground(Color.BLACK);
-			base = new Base(0,0);
+			base = new Base(10,10);
 			}
 			
 			//draws the base
@@ -71,7 +72,7 @@ public class SpaceInvaders extends JFrame{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		var f = new SpaceInvaders();
 		f.setVisible(true);
 	}
