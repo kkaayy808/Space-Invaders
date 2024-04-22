@@ -28,7 +28,7 @@ public class Base extends Ship{
 		case RIGHT -> setX( x + 10 );
 		}
 	}
-	public Missile fireMissle() {
+	public Missile fireMissile() {
 		var missile = new Missile( getX() + 20, getY() );
 		playSound();
 		return missile;

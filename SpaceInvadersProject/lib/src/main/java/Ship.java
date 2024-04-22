@@ -1,25 +1,27 @@
+import java.awt.Image;
 
-
+import javax.sound.sampled.Clip;
 
 public abstract class Ship extends Drawable{
-	public enum Direction { UP, DOWN, LEFT, RIGHT }
+	
+	private boolean isHit;
+	private Clip hitSound;
+	private Image hitShip;
+
 	public Ship(int x, int y) {
-		super( x, y );
+		super(x, y);
+		hitSound = getSound("aud_hit.wav");
+		isHit = false;
 	}
-	public void move(Direction direction) {
-		var x = getX();
-		var y = getY();
-		switch (direction) {
-		case UP    -> setY( y - 15 );
-		case DOWN  -> setY( y + 15 );
-		case LEFT  -> setX( x - 15 );
-		case RIGHT -> setX( x + 15 );
-		}
+	
+	public boolean shipHit() {
+		return isHit;
 	}
-	public Missile fireTorpedo() {
-		var missile = new Missile( getX() + 20, getY() );
-		missile.playSound();
-		return missile;
+	
+	public void gotHit() {
+		isHit = true;
+		hitSound.setFramePosition(0);
+		hitSound.start();
 	}
 
 }

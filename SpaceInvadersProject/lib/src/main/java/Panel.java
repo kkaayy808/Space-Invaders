@@ -21,6 +21,7 @@ public class Panel extends JPanel{
 	private boolean left;
 	private Base base;
 	public static Timer timer;
+	private Missile missile;
 		
 	public Panel() {
 		
@@ -34,11 +35,20 @@ public class Panel extends JPanel{
 		
 		//basic timer
 		timer = new Timer(20, e -> {
+			if (missile != null) {
+				missile.move();
+				if(missile.getY() < -50) {
+					missile = null;
+				}
+		}
 			if(left) base.move(Base.Direction.LEFT);
 			if(right) base.move(Base.Direction.RIGHT);
+			repaint();
 		});
 		timer.start();
 		setFocusable(true);
+		
+		
 		//I think this is what we will use to register hits and stuff not sure yet
 		addKeyListener(new KeyAdapter() {
             @Override
@@ -47,6 +57,11 @@ public class Panel extends JPanel{
                 switch(keyCode) {
 				case KeyEvent.VK_LEFT -> left = true;
 				case KeyEvent.VK_RIGHT -> right = true;
+				case KeyEvent.VK_SPACE -> {
+					if (missile == null) {
+						missile = base.fireMissile();
+					}
+				}
 				}
             }
             
@@ -66,6 +81,9 @@ public class Panel extends JPanel{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		base.draw(g2); 
+		if(missile != null) {
+			missile.draw(g2);
+		}
 	}
 	
 	
