@@ -29,7 +29,7 @@ public class Mystery extends Invader{
 	    }
 	    
 	    public void move() {
-	    	int width = 100; // needs to be udated later
+	    	int width = 490; // needs to be udated later
 	        setX(getX() + direction * speed);
 
 	        if (getX() <= 0 || getX() >= width) {
