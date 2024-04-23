@@ -17,6 +17,12 @@ public class InvaderBottom extends Invader{
 	}
 	
 	public void move() {
-        moveHorizontally();
+		int panelWidth = 500;
+	    if (hitsSide(panelWidth)) {
+	        reverseDirection();
+	        moveDown(10);
+	    } else {
+	        moveHorizontally(); 
+	    }
     }
 }

@@ -53,4 +53,18 @@ public abstract class Invader extends Ship{
 	protected void moveDown(int amount) {
         setY(getY() + amount);
     }
+	
+	protected boolean hitsSide(int panelWidth) {
+        return getX() <= 0 || getX() >= panelWidth - 5;
+    }
+	
+	protected void move() {
+	    int panelWidth = 500;
+	    if (hitsSide(panelWidth)) {
+	        reverseDirection();
+	        moveDown(10);
+	    } else {
+	        moveHorizontally(); 
+	    }
+	}
 }
