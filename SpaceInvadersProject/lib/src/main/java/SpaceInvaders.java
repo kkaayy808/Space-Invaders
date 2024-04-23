@@ -43,6 +43,11 @@ public class SpaceInvaders extends JFrame{
 		//"Game" menu drop down
 		menu.add(game);
 		var newGame = game.add("New Game");
+		
+		newGame.addActionListener(e -> {
+			Panel.timer.restart(); //this does not work :(((
+		});
+		
 		game.addSeparator();
 		var pause = game.add("Pause");
 		

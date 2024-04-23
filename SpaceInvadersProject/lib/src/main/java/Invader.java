@@ -11,9 +11,13 @@ public abstract class Invader extends Ship{
 	protected Image b;
 	protected boolean alternate = false;
 	protected boolean moveRight = true;
+	protected int pulseCount; //number of pulses
+							  //run by the timer 
+	protected double speed; //the desired pace per pulse 
 	
 	public Invader(int x, int y) {
 		super(x, y);
+		speed = 40;
 	}
 	
 	public int getPoints() {
@@ -40,14 +44,15 @@ public abstract class Invader extends Ship{
 	
 	protected void moveHorizontally() {
         if (moveRight) {
-            setX(getX() + 1); //right
+            setX(getX() + 5); //right
         } else {
-            setX(getX() - 1); //left
+            setX(getX() - 5); //left
         }
     }
 	
 	protected void reverseDirection() {
         moveRight = !moveRight;
+        speed = speed * 0.8;
     }
 	
 	protected void moveDown(int amount) {
@@ -55,18 +60,30 @@ public abstract class Invader extends Ship{
     }
 	
 	protected boolean hitsSide(int panelWidth) {
-        return getX() <= 0 || getX() >= panelWidth - 5;
+        return getX() <= 0 || getX() >= panelWidth - 35;
     }
 	
 	protected void move() {
-	    int panelWidth = 500;
-	    if (hitsSide(panelWidth)) {
-	        reverseDirection();
-	        moveDown(12);
-	        moveHorizontally();
-	    } else {
-	        moveHorizontally();
-	        toggleImage();
-	    }
+		if (pulseCount % speed == 0) {
+			int panelWidth = 500;
+		    if (hitsSide(panelWidth)) {
+		        reverseDirection();
+		        moveDown(12);
+		        moveHorizontally();
+		    } else {
+		        moveHorizontally();
+		        toggleImage();
+		    }
+		}
+//	    int panelWidth = 500;
+//	    if (hitsSide(panelWidth)) {
+//	        reverseDirection();
+//	        moveDown(12);
+//	        moveHorizontally();
+//	    } else {
+//	        moveHorizontally();
+//	        toggleImage();
+//	    }
+		++pulseCount;
 	}
 }

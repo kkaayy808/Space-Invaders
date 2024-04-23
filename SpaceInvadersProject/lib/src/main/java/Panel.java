@@ -83,15 +83,21 @@ public class Panel extends JPanel{
 	private void initializeInvaders() {
         //top invaders
         for (int i = 0; i < 10; i++) {
-            topInvaders.add(new InvaderTop(35 * i + 65, 80));
+            topInvaders.add(new InvaderTop(35 * i + 75, 80));
         }
         //middle invaders
-        for (int i = 0; i < 5; i++) {
-            middleInvaders.add(new InvaderMiddle(80 * i + 20, 105));
+        for (int i = 0; i < 10; i++) {
+            middleInvaders.add(new InvaderMiddle(35 * i + 75, 105));
+        }
+        for (int i = 0; i < 10; i++) {
+            middleInvaders.add(new InvaderMiddle(35 * i + 75, 130));
         }
         //bottom invaders
-        for (int i = 0; i < 5; i++) {
-            bottomInvaders.add(new InvaderBottom(80 * i + 20, 1130));
+        for (int i = 0; i < 10; i++) {
+            bottomInvaders.add(new InvaderBottom(35 * i + 75, 155));
+        }
+        for (int i = 0; i < 10; i++) {
+            bottomInvaders.add(new InvaderBottom(35 * i + 75, 180));
         }
     }
 	
