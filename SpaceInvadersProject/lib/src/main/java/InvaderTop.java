@@ -13,14 +13,14 @@ public class InvaderTop extends Invader{
 		g2.drawImage(getCurrentImage(), getX(), getY(), null);
 	}
 	
-	public void move() {
-		int panelWidth = 500;
-	    if (hitsSide(panelWidth)) {
-	        reverseDirection();
-	        moveDown(10);
-	    } else {
-	        moveHorizontally(); 
-	    }
-    }
+//	public void move() {
+//		int panelWidth = 500;
+//	    if (hitsSide(panelWidth)) {
+//	        reverseDirection();
+//	        moveDown(10);
+//	    } else {
+//	        moveHorizontally(); 
+//	    }
+//    }
 
 }

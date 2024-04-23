@@ -62,9 +62,11 @@ public abstract class Invader extends Ship{
 	    int panelWidth = 500;
 	    if (hitsSide(panelWidth)) {
 	        reverseDirection();
-	        moveDown(10);
+	        moveDown(12);
+	        moveHorizontally();
 	    } else {
-	        moveHorizontally(); 
+	        moveHorizontally();
+	        toggleImage();
 	    }
 	}
 }

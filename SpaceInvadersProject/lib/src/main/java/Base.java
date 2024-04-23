@@ -24,8 +24,8 @@ public class Base extends Ship{
 	public void move(Direction direction) {
 		var x = getX();
 		switch (direction) {
-		case LEFT  -> setX( x - 10 );
-		case RIGHT -> setX( x + 10 );
+		case LEFT  -> setX( x - 5 );
+		case RIGHT -> setX( x + 5 );
 		}
 	}
 	public Missile fireMissile() {

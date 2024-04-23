@@ -45,7 +45,17 @@ public class SpaceInvaders extends JFrame{
 		var newGame = game.add("New Game");
 		game.addSeparator();
 		var pause = game.add("Pause");
+		
+		pause.addActionListener(e -> {
+			Panel.timer.stop();
+		});
+		
 		var resume = game.add("Resume");
+		
+		resume.addActionListener(e -> {
+			Panel.timer.start();
+		});
+		
 		game.addSeparator();
 		var quit = game.add("Quit");
 		

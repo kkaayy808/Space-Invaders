@@ -37,7 +37,7 @@ public class Panel extends JPanel{
         mysteryShip = new Mystery(0, 0); //???
 		
 		//basic timer
-		timer = new Timer(20, e -> {
+		timer = new Timer(10, e -> {
 			if (missile != null) {
 				missile.move();
 				if(missile.getY() < -50) {
@@ -82,16 +82,16 @@ public class Panel extends JPanel{
 	
 	private void initializeInvaders() {
         //top invaders
-        for (int i = 0; i < 3; i++) {
-            topInvaders.add(new InvaderTop(100 * i + 50, 50));
+        for (int i = 0; i < 10; i++) {
+            topInvaders.add(new InvaderTop(35 * i + 65, 80));
         }
         //middle invaders
         for (int i = 0; i < 5; i++) {
-            middleInvaders.add(new InvaderMiddle(80 * i + 20, 120));
+            middleInvaders.add(new InvaderMiddle(80 * i + 20, 105));
         }
         //bottom invaders
         for (int i = 0; i < 5; i++) {
-            bottomInvaders.add(new InvaderBottom(80 * i + 20, 190));
+            bottomInvaders.add(new InvaderBottom(80 * i + 20, 1130));
         }
     }
 	
