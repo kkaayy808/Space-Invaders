@@ -60,11 +60,11 @@ public abstract class Invader extends Ship{
     }
 	
 	protected boolean hitsSide(int panelWidth) {
-        return getX() <= 0 || getX() >= panelWidth - 35;
+        return getX() <= 0 || getX() >= panelWidth - 40;
     }
 	
 	protected void move() {
-		if (pulseCount % speed == 0) {
+		if (pulseCount == speed) {
 			int panelWidth = 500;
 		    if (hitsSide(panelWidth)) {
 		        reverseDirection();
@@ -74,6 +74,7 @@ public abstract class Invader extends Ship{
 		        moveHorizontally();
 		        toggleImage();
 		    }
+		    pulseCount = 0;
 		}
 //	    int panelWidth = 500;
 //	    if (hitsSide(panelWidth)) {
@@ -84,6 +85,11 @@ public abstract class Invader extends Ship{
 //	        moveHorizontally();
 //	        toggleImage();
 //	    }
+		
+		//this commented out code works...but doesn't account for speed
+		//but the pulseCount code makes the speed of the invaders correct, but messed up the reverseDirection()
+		//it wont bounce off the left wall with the pulse code...idk
+		
 		++pulseCount;
 	}
 }
