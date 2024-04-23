@@ -8,30 +8,33 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class Panel extends JPanel{
-	
-	
+	private ArrayList<InvaderTop> topInvaders;
+    private ArrayList<InvaderMiddle> middleInvaders;
+    private ArrayList<InvaderBottom> bottomInvaders;
+    private Mystery mysteryShip;
 	private boolean right;
 	private boolean left;
 	private Base base;
 	public static Timer timer;
 	private Missile missile;
 		
-	public Panel() {
-		
-		
-		
+	public Panel() {		
 		setPreferredSize(new Dimension(500, 400));
 		setBackground(Color.BLACK);
 		
 		base = new Base(225,350);
-		
+		topInvaders = new ArrayList<>();
+        middleInvaders = new ArrayList<>();
+        bottomInvaders = new ArrayList<>();
+        initializeInvaders();
+        mysteryShip = new Mystery(0, 0); //???
 		
 		//basic timer
 		timer = new Timer(20, e -> {
@@ -43,6 +46,7 @@ public class Panel extends JPanel{
 		}
 			if(left) base.move(Base.Direction.LEFT);
 			if(right) base.move(Base.Direction.RIGHT);
+			moveInvaders();
 			repaint();
 		});
 		timer.start();
@@ -60,8 +64,8 @@ public class Panel extends JPanel{
 				case KeyEvent.VK_SPACE -> {
 					if (missile == null) {
 						missile = base.fireMissile();
+						}
 					}
-				}
 				}
             }
             
@@ -76,11 +80,57 @@ public class Panel extends JPanel{
         });
 	}
 	
+	private void initializeInvaders() {
+        //top invaders
+        for (int i = 0; i < 3; i++) {
+            topInvaders.add(new InvaderTop(100 * i + 50, 50));
+        }
+        //middle invaders
+        for (int i = 0; i < 5; i++) {
+            middleInvaders.add(new InvaderMiddle(80 * i + 20, 120));
+        }
+        //bottom invaders
+        for (int i = 0; i < 5; i++) {
+            bottomInvaders.add(new InvaderBottom(80 * i + 20, 190));
+        }
+    }
+	
+	private void moveInvaders() {
+        //top invaders
+        for (InvaderTop invader : topInvaders) {
+            invader.move();
+        }
+        //middle invaders
+        for (InvaderMiddle invader : middleInvaders) {
+            invader.move();
+        }
+        //bottom invaders
+        for (InvaderBottom invader : bottomInvaders) {
+            invader.move();
+        }
+        //mystery ship
+        mysteryShip.move();
+    }
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		base.draw(g2); 
+		//top invaders
+        for (InvaderTop invader : topInvaders) {
+            invader.draw(g2);
+        }
+        //middle invaders
+        for (InvaderMiddle invader : middleInvaders) {
+            invader.draw(g2);
+        }
+        //bottom invaders
+        for (InvaderBottom invader : bottomInvaders) {
+            invader.draw(g2);
+        }
+        //mystery ship
+        mysteryShip.draw(g2);
 		if(missile != null) {
 			missile.draw(g2);
 		}

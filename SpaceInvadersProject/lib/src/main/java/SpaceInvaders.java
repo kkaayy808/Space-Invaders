@@ -2,6 +2,8 @@
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -10,7 +12,7 @@ import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class SpaceInvaders extends JFrame{
-	
+    
 	public SpaceInvaders(){
 		setTitle("Space Invaders");
 		setSize(500, 450);
