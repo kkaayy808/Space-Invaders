@@ -4,7 +4,7 @@ import java.awt.Image;
 import javax.sound.sampled.Clip;
 
 public class Mystery extends Invader{
-	 private int speed = 2;
+	 private int speed = 5;
 	 private int direction;
 	 private int[] possiblePoints = {50, 100, 150, 300};
 	 private Image image;
@@ -36,14 +36,25 @@ public class Mystery extends Invader{
 	    
 	    public void move() {
 	    	
-	    	int width = 490; // needs to be updated later
-	        setX(getX() + direction * speed);
+	    	if(pulseCnt % 2 == 0) {
+	    		int width = 490; // needs to be updated later
+		        setX(getX() + direction * speed);
 
-	        if (getX() <= 0 || getX() >= width) {
-	            setX(direction > 0 ? 0 : width);
-	            points = getRandomPoints();
-	            direction = getRandomDirection();
-	        }
+		        if (getX() <= 0 || getX() >= width) {
+		            setX(direction > 0 ? 0 : width);
+		            points = getRandomPoints();
+		            direction = getRandomDirection();
+		        }
+	    	}
+	    	
+//	    	int width = 490; // needs to be updated later
+//	        setX(getX() + direction * speed);
+//
+//	        if (getX() <= 0 || getX() >= width) {
+//	            setX(direction > 0 ? 0 : width);
+//	            points = getRandomPoints();
+//	            direction = getRandomDirection();
+//	        }
 	        
 	        if (pulseCnt == 0) {
 	        	playSound();
