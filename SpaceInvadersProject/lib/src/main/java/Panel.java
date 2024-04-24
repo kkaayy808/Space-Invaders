@@ -104,15 +104,42 @@ public class Panel extends JPanel{
 	private void moveInvaders() {
         //top invaders
         for (InvaderTop invader : topInvaders) {
-            invader.move();
+            if(invader.hitsSide(500)) {
+            	for(InvaderTop eachInvader : topInvaders) {
+            		eachInvader.reverseDirection();
+            		eachInvader.moveDown(12);
+                	eachInvader.moveHorizontally();
+            	}
+            }
+            else {
+            	invader.move();
+            }
         }
         //middle invaders
         for (InvaderMiddle invader : middleInvaders) {
-            invader.move();
+            if(invader.hitsSide(500)) {
+            	for(InvaderMiddle eachInvader : middleInvaders) {
+            		eachInvader.reverseDirection();
+            		eachInvader.moveDown(12);
+                	eachInvader.moveHorizontally();
+            	}
+            }
+            else {
+            	invader.move();
+            }
         }
         //bottom invaders
         for (InvaderBottom invader : bottomInvaders) {
-            invader.move();
+            if(invader.hitsSide(500)) {
+            	for(InvaderBottom eachInvader : bottomInvaders) {
+            		eachInvader.reverseDirection();
+            		eachInvader.moveDown(12);
+                	eachInvader.moveHorizontally();
+            	}
+            }
+            else {
+            	invader.move();;
+            }
         }
         //mystery ship
         mysteryShip.move();
