@@ -1,5 +1,7 @@
 
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -69,6 +71,8 @@ public class SpaceInvaders extends JFrame{
 			if(result == JOptionPane.YES_OPTION) {
 				dispose();
 			}
+			
+			
 		});
 		
 		

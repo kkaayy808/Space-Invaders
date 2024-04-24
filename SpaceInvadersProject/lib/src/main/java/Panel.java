@@ -2,6 +2,7 @@
 
 //import static java.awt.Frame.base;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,7 +11,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
@@ -28,6 +31,15 @@ public class Panel extends JPanel{
 	public Panel() {		
 		setPreferredSize(new Dimension(500, 400));
 		setBackground(Color.BLACK);
+		
+		JLabel score = new JLabel("score: ");
+		score.setForeground(Color.GREEN);
+		score.setHorizontalAlignment(SwingConstants.RIGHT);
+		this.add(score, BorderLayout.NORTH);
+//		score.setLocation(400, 10);
+		//trying to position score in the top right of panel
+		
+		
 		
 		base = new Base(225,350);
 		topInvaders = new ArrayList<>();
