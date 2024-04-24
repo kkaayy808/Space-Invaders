@@ -17,6 +17,7 @@ public class Base extends Ship{
 		image = getImage("img_base.gif");
 		sound = getSound("aud_basefire.wav");
 		baseHitImg = getImage("img_basehit.gif");
+		setHitImage(baseHitImg);
 	}
 	@Override
 	public void draw(Graphics2D g2) {

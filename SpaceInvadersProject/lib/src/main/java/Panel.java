@@ -27,19 +27,14 @@ public class Panel extends JPanel{
 	private Base base;
 	public static Timer timer;
 	private Missile missile;
+	private int scoreAmt = 0;
+	private JLabel score;
 		
 	public Panel() {		
 		setPreferredSize(new Dimension(500, 400));
 		setBackground(Color.BLACK);
 		
 		setLayout(new BorderLayout());
-		
-		JLabel score = new JLabel("score: ");
-		score.setForeground(Color.GREEN);
-		score.setHorizontalAlignment(SwingConstants.RIGHT);
-		this.add(score, BorderLayout.NORTH);
-//		score.setLocation(400, 10);
-		//trying to position score in the top right of panel
 		
 		
 		
@@ -61,10 +56,13 @@ public class Panel extends JPanel{
 			if(left) base.move(Base.Direction.LEFT);
 			if(right) base.move(Base.Direction.RIGHT);
 			moveInvaders();
+			scoreBoard();
+			
 			repaint();
 		});
 		timer.start();
 		setFocusable(true);
+		
 		
 		
 		//I think this is what we will use to register hits and stuff not sure yet
@@ -118,6 +116,15 @@ public class Panel extends JPanel{
 	private void moveInvaders() {
         //top invaders
         for (InvaderTop invader : topInvaders) {
+        	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
+        		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
+        			invader.setX(-invader.getX());
+        			missile = null;
+        			invader.gotHit();
+        			scoreAmt += invader.getPoints();
+        			scoreBoard();
+        		}
+        	}
             if(invader.hitsSide(500)) {
             	for(InvaderTop eachInvader : topInvaders) {
             		eachInvader.reverseDirection();
@@ -131,6 +138,15 @@ public class Panel extends JPanel{
         }
         //middle invaders
         for (InvaderMiddle invader : middleInvaders) {
+        	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
+        		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
+        			invader.setX(-invader.getX());
+        			missile = null;
+        			invader.gotHit();
+        			scoreAmt += invader.getPoints();
+        			scoreBoard();
+        		}
+        	}
             if(invader.hitsSide(500)) {
             	for(InvaderMiddle eachInvader : middleInvaders) {
             		eachInvader.reverseDirection();
@@ -144,6 +160,15 @@ public class Panel extends JPanel{
         }
         //bottom invaders
         for (InvaderBottom invader : bottomInvaders) {
+        	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
+        		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
+        			invader.setX(-invader.getX());
+        			missile = null;
+        			invader.gotHit();
+        			scoreAmt += invader.getPoints();
+        			scoreBoard();
+        		}
+        	}
             if(invader.hitsSide(500)) {
             	for(InvaderBottom eachInvader : bottomInvaders) {
             		eachInvader.reverseDirection();
@@ -158,6 +183,20 @@ public class Panel extends JPanel{
         //mystery ship
         mysteryShip.move();
     }
+	
+	private void scoreBoard() {
+		
+		if(score == null) {
+			score = new JLabel("score: " + scoreAmt);
+			score.setForeground(Color.GREEN);
+			score.setHorizontalAlignment(SwingConstants.RIGHT);
+			add(score, BorderLayout.NORTH);
+		}
+		else {
+			score.setText("score: " + scoreAmt);
+		}
+		
+	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {

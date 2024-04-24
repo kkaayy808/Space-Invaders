@@ -1,3 +1,4 @@
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.sound.sampled.Clip;
@@ -23,5 +24,11 @@ public abstract class Ship extends Drawable{
 		hitSound.setFramePosition(0);
 		hitSound.start();
 	}
+	
+	public void setHitImage(Image hitPic) {
+		this.hitShip = hitPic;
+		
+	}
+	
 
 }

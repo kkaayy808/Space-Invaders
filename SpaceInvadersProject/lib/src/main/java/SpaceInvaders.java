@@ -69,6 +69,7 @@ public class SpaceInvaders extends JFrame{
 		quit.addActionListener(e -> {
 			var result = JOptionPane.showConfirmDialog(SpaceInvaders.this, "Dare to Quit?");
 			if(result == JOptionPane.YES_OPTION) {
+				Panel.timer.stop();
 				dispose();
 			}
 			

@@ -20,6 +20,7 @@ public abstract class Invader extends Ship{
 		super(x, y);
 		speed = 40;
 		invaderHit = getImage("img_invaderhit.gif");
+		setHitImage(invaderHit);
 	}
 	
 	public int getPoints() {
@@ -62,7 +63,7 @@ public abstract class Invader extends Ship{
     }
 	
 	protected boolean hitsSide(int panelWidth) {
-        return getX() <= 0 || getX() >= panelWidth - 35;
+        return getX() == 0 || getX() >= panelWidth - 35;
     }
 	
 	protected void move() {
