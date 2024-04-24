@@ -32,6 +32,8 @@ public class Panel extends JPanel{
 		setPreferredSize(new Dimension(500, 400));
 		setBackground(Color.BLACK);
 		
+		setLayout(new BorderLayout());
+		
 		JLabel score = new JLabel("score: ");
 		score.setForeground(Color.GREEN);
 		score.setHorizontalAlignment(SwingConstants.RIGHT);
