@@ -34,7 +34,7 @@ public class Panel extends JPanel{
         middleInvaders = new ArrayList<>();
         bottomInvaders = new ArrayList<>();
         initializeInvaders();
-        mysteryShip = new Mystery(0, 0); //???
+        mysteryShip = new Mystery(0, 50); //???
 		
 		//basic timer
 		timer = new Timer(10, e -> {

@@ -9,6 +9,7 @@ public abstract class Invader extends Ship{
 	protected int points;
 	protected Image a;
 	protected Image b;
+	protected Image invaderHit;
 	protected boolean alternate = false;
 	protected boolean moveRight = true;
 	protected int pulseCount; //number of pulses
@@ -18,6 +19,7 @@ public abstract class Invader extends Ship{
 	public Invader(int x, int y) {
 		super(x, y);
 		speed = 40;
+		invaderHit = getImage("img_invaderhit.gif");
 	}
 	
 	public int getPoints() {

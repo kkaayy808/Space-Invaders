@@ -10,11 +10,13 @@ public class Base extends Ship{
 	public enum Direction {LEFT, RIGHT}
 	private Image image;
 	private Clip sound;
+	private Image baseHitImg;
 	
 	public Base(int x, int y){
 		super(x, y);
 		image = getImage("img_base.gif");
 		sound = getSound("aud_basefire.wav");
+		baseHitImg = getImage("img_basehit.gif");
 	}
 	@Override
 	public void draw(Graphics2D g2) {
