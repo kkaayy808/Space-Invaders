@@ -32,7 +32,7 @@ public class Base extends Ship{
 		}
 	}
 	public Missile fireMissile() {
-		var missile = new Missile( getX() + 20, getY() );
+		var missile = new Missile( getX() + 20, getY(), "up");
 		playSound();
 		return missile;
 	}

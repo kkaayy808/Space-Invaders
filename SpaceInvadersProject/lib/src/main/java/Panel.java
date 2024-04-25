@@ -276,21 +276,21 @@ public class Panel extends JPanel{
 	        if (random.nextInt(5000) < 1) { 
 	            int invaderX = invader.getX() + 20; 
 	            int invaderY = invader.getY() + 35; 
-	            invaderMissiles.add(new Missile(invaderX, invaderY)); 
+	            invaderMissiles.add(new Missile(invaderX, invaderY, "down")); 
 	        }
 	    }
 	    for (Invader invader : middleInvaders) {
 	        if (random.nextInt(5000) < 1) {
 	            int invaderX = invader.getX() + 20;
 	            int invaderY = invader.getY() + 35;
-	            invaderMissiles.add(new Missile(invaderX, invaderY));
+	            invaderMissiles.add(new Missile(invaderX, invaderY, "down"));
 	        }
 	    }
 	    for (Invader invader : bottomInvaders) {
 	        if (random.nextInt(5000) < 1) { 
 	            int invaderX = invader.getX() + 20;
 	            int invaderY = invader.getY() + 35;
-	            invaderMissiles.add(new Missile(invaderX, invaderY));
+	            invaderMissiles.add(new Missile(invaderX, invaderY, "down"));
 	        }
 	    }
 	}

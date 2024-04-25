@@ -8,9 +8,12 @@ import javax.sound.sampled.Clip;
 public class Missile extends Drawable{
 		private static final int Width= 2;
 		private static final int Height = 10;
+		private String direction;
+		private int speed = 5;
 		
-		public Missile(int x, int y) {
+		public Missile(int x, int y, String direction) {
 			super( x, y );
+			this.direction = direction;
 		}
 		@Override
 		public void draw(Graphics2D g2) {
@@ -20,6 +23,9 @@ public class Missile extends Drawable{
 		
 		//will have to alter this for missiles fired by the ships
 		public void move() {
+			if (direction.equals("down") ) {
+				setY(getY() + 8);
+			}
 			setY(getY() - 5);
 		}
 }
