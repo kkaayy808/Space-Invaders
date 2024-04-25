@@ -18,8 +18,8 @@ import javax.swing.JLabel;
 
 public abstract class Drawable {
 	
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 
 	public Drawable(int x, int y) {
 		this.x = x;

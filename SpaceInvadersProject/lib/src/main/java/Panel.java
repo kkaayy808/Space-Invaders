@@ -222,5 +222,16 @@ public class Panel extends JPanel{
 		}
 	}
 	
+	public void restartGame() {
+		timer.stop();
+		base.reset();
+		topInvaders.clear();
+		bottomInvaders.clear();
+		middleInvaders.clear();
+		initializeInvaders();
+		timer.start();
+		repaint();
+		
+	}
 	
 }

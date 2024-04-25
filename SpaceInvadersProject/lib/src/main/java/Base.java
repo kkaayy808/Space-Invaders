@@ -41,4 +41,9 @@ public class Base extends Ship{
 		sound.setFramePosition(0);
 		sound.start();
 	}
+	
+	public void reset() {
+		this.x = getX();
+		this.y = getY();
+	}
 }
