@@ -46,15 +46,6 @@ public class Mystery extends Invader{
 		            direction = getRandomDirection();
 		        }
 	    	}
-	    	
-//	    	int width = 490; // needs to be updated later
-//	        setX(getX() + direction * speed);
-//
-//	        if (getX() <= 0 || getX() >= width) {
-//	            setX(direction > 0 ? 0 : width);
-//	            points = getRandomPoints();
-//	            direction = getRandomDirection();
-//	        }
 	        
 	        if (pulseCnt == 0) {
 	        	playSound();

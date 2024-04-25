@@ -118,7 +118,7 @@ public class Panel extends JPanel{
         for (InvaderTop invader : topInvaders) {
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
-        			invader.setX(-invader.getX());
+        			invader.setX(-invader.getX()* 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -140,7 +140,7 @@ public class Panel extends JPanel{
         for (InvaderMiddle invader : middleInvaders) {
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
-        			invader.setX(-invader.getX());
+        			invader.setX(-invader.getX()* 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -162,7 +162,7 @@ public class Panel extends JPanel{
         for (InvaderBottom invader : bottomInvaders) {
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
-        			invader.setX(-invader.getX());
+        			invader.setX(-invader.getX() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -181,7 +181,21 @@ public class Panel extends JPanel{
             }
         }
         //mystery ship
-        mysteryShip.move();
+        
+        
+        if(missile != null && missile.getX() >= mysteryShip.getX() && missile.getX() <= mysteryShip.getX() + 35) {
+    		if(missile.getY() >= mysteryShip.getY() && missile.getY() <= mysteryShip.getY() + 35) {
+    			mysteryShip.setX(-mysteryShip.getX() * 10);
+    			missile = null;
+    			mysteryShip.gotHit();
+    			scoreAmt += mysteryShip.getPoints();
+    			scoreBoard();
+    		}
+    	}
+        else {
+        	mysteryShip.move();;
+        }
+        
     }
 	
 	private void scoreBoard() {
@@ -229,6 +243,7 @@ public class Panel extends JPanel{
 		bottomInvaders.clear();
 		middleInvaders.clear();
 		initializeInvaders();
+		scoreAmt = 0;
 		timer.start();
 		repaint();
 		

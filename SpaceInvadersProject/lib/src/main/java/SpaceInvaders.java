@@ -1,6 +1,5 @@
 
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -20,19 +19,6 @@ public class SpaceInvaders extends JFrame{
 		setSize(500, 450);
 		//adds the Jpanel for the game
 		add(new Panel() {
-//			private Base base;
-//			{
-//			setBackground(Color.BLACK);
-//			base = new Base(10,10);
-//			}
-//			
-//			//draws the base
-//			@Override
-//			protected void paintComponent(Graphics g) {
-//				super.paintComponent(g);
-//				Graphics2D g2 = (Graphics2D) g;
-//				base.draw(g2); 
-//			}
 		});
 		
 		var menu = new JMenuBar();
