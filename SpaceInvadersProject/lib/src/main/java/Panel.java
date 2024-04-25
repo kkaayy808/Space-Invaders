@@ -1,6 +1,7 @@
 
 
 //import static java.awt.Frame.base;
+import java.util.Random;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -62,6 +63,13 @@ public class Panel extends JPanel{
 			if(right) base.move(Base.Direction.RIGHT);
 			moveInvaders();
 			scoreBoard();
+			for (Missile missile : invaderMissiles) {
+			    missile.move();
+			    if (missile.getY() > 400) {
+			        invaderMissiles.remove(missile);
+			    }
+			}
+			fireInvaderMissiles();
 			
 			repaint();
 		});
@@ -254,7 +262,39 @@ public class Panel extends JPanel{
 		if(missile != null) {
 			missile.draw(g2);
 		}
+		for (Missile missile : invaderMissiles) {
+		    missile.draw(g2);
+		}
 	}
+	
+	private ArrayList<Missile> invaderMissiles = new ArrayList<>();
+
+	private void fireInvaderMissiles() {
+	    Random random = new Random();
+	    for (Invader invader : topInvaders) {
+	        // Random chance to fire a missile
+	        if (random.nextInt(5000) < 1) { 
+	            int invaderX = invader.getX() + 20; 
+	            int invaderY = invader.getY() + 35; 
+	            invaderMissiles.add(new Missile(invaderX, invaderY)); 
+	        }
+	    }
+	    for (Invader invader : middleInvaders) {
+	        if (random.nextInt(5000) < 1) {
+	            int invaderX = invader.getX() + 20;
+	            int invaderY = invader.getY() + 35;
+	            invaderMissiles.add(new Missile(invaderX, invaderY));
+	        }
+	    }
+	    for (Invader invader : bottomInvaders) {
+	        if (random.nextInt(5000) < 1) { 
+	            int invaderX = invader.getX() + 20;
+	            int invaderY = invader.getY() + 35;
+	            invaderMissiles.add(new Missile(invaderX, invaderY));
+	        }
+	    }
+	}
+
 	
 	public void restartGame() {
 		timer.stop();
@@ -264,8 +304,10 @@ public class Panel extends JPanel{
 		middleInvaders.clear();
 		initializeInvaders();
 		scoreAmt = 0;
+		gameOver.setVisible(false);
 		timer.start();
 		repaint();
+		
 		
 	}
 	
