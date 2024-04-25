@@ -11,6 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -63,12 +64,14 @@ public class Panel extends JPanel{
 			if(right) base.move(Base.Direction.RIGHT);
 			moveInvaders();
 			scoreBoard();
-			for (Missile missile : invaderMissiles) {
-			    missile.move();
-			    if (missile.getY() > 400) {
-			        invaderMissiles.remove(missile);
-			    }
-			}
+			Iterator<Missile> iterator = invaderMissiles.iterator();
+		    while (iterator.hasNext()) {
+		        Missile missile = iterator.next();
+		        missile.move();
+		        if (missile.getY() > 400) {
+		            iterator.remove();
+		        }
+		    }
 			fireInvaderMissiles();
 			
 			repaint();
