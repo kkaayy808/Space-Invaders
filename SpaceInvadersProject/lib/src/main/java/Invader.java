@@ -70,25 +70,9 @@ public abstract class Invader extends Ship{
 		if (pulseCount >= speed) {
 			moveHorizontally();
 			toggleImage();
-//			int panelWidth = 500;
-//		    if (hitsSide(panelWidth)) {
-//		        reverseDirection();
-//		        moveDown(12);
-//		        moveHorizontally();
-//		    } else {
-//		        moveHorizontally();
-//		        toggleImage();
-//		    }
+
 		    pulseCount = 0;
 		}
-//
-//		//but the pulseCount code makes the speed of the invaders correct, but messed up the reverseDirection()
-//		//it wont bounce off the left wall with the pulse code...idk
-		
 		++pulseCount;
-		
-		
-//		moveHorizontally();
-//		toggleImage();
 	}
 }

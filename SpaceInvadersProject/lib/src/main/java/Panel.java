@@ -29,6 +29,7 @@ public class Panel extends JPanel{
 	private Missile missile;
 	private int scoreAmt = 0;
 	private JLabel score;
+	private JLabel gameOver;
 		
 	public Panel() {		
 		setPreferredSize(new Dimension(500, 400));
@@ -36,7 +37,11 @@ public class Panel extends JPanel{
 		
 		setLayout(new BorderLayout());
 		
-		
+		gameOver = new JLabel("Game Over");
+    	gameOver.setForeground(Color.GREEN);
+    	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
+    	add(gameOver, BorderLayout.CENTER);
+    	gameOver.setVisible(false);
 		
 		base = new Base(225,350);
 		topInvaders = new ArrayList<>();
@@ -118,7 +123,8 @@ public class Panel extends JPanel{
         for (InvaderTop invader : topInvaders) {
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
-        			invader.setX(-invader.getX());
+        			invader.setX(-invader.getX()* 10);
+        			invader.setY(-invader.getY() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -132,6 +138,10 @@ public class Panel extends JPanel{
                 	eachInvader.moveHorizontally();
             	}
             }
+            if(invader.getY() >= 370) {
+            	gameOver.setVisible(true);
+            	timer.stop();
+            }
             else {
             	invader.move();
             }
@@ -140,7 +150,8 @@ public class Panel extends JPanel{
         for (InvaderMiddle invader : middleInvaders) {
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
-        			invader.setX(-invader.getX());
+        			invader.setX(-invader.getX()* 10);
+        			invader.setY(-invader.getY() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -154,6 +165,10 @@ public class Panel extends JPanel{
                 	eachInvader.moveHorizontally();
             	}
             }
+            if(invader.getY() >= 370) {
+            	gameOver.setVisible(true);
+            	timer.stop();
+            }
             else {
             	invader.move();
             }
@@ -162,7 +177,8 @@ public class Panel extends JPanel{
         for (InvaderBottom invader : bottomInvaders) {
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
-        			invader.setX(-invader.getX());
+        			invader.setX(-invader.getX() * 10);
+        			invader.setY(-invader.getY() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -176,12 +192,30 @@ public class Panel extends JPanel{
                 	eachInvader.moveHorizontally();
             	}
             }
+            if(invader.getY() >= 370) {
+            	gameOver.setVisible(true);
+            	timer.stop();
+            }
             else {
             	invader.move();;
             }
         }
         //mystery ship
-        mysteryShip.move();
+        
+        
+        if(missile != null && missile.getX() >= mysteryShip.getX() && missile.getX() <= mysteryShip.getX() + 35) {
+    		if(missile.getY() >= mysteryShip.getY() && missile.getY() <= mysteryShip.getY() + 35) {
+    			mysteryShip.setX(-mysteryShip.getX() * 10);
+    			missile = null;
+    			mysteryShip.gotHit();
+    			scoreAmt += mysteryShip.getPoints();
+    			scoreBoard();
+    		}
+    	}
+        else {
+        	mysteryShip.move();;
+        }
+        
     }
 	
 	private void scoreBoard() {
@@ -229,6 +263,7 @@ public class Panel extends JPanel{
 		bottomInvaders.clear();
 		middleInvaders.clear();
 		initializeInvaders();
+		scoreAmt = 0;
 		timer.start();
 		repaint();
 		
