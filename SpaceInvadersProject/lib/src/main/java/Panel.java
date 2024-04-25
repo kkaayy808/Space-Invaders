@@ -227,6 +227,13 @@ public class Panel extends JPanel{
         	mysteryShip.move();;
         }
         
+        if(missile != null && missile.getX() >= base.getX() && missile.getX() <= base.getX() + 35) {
+    		if(missile.getY() >= base.getY() && missile.getY() <= base.getY() + 35) {
+    			gameOver.setVisible(true);
+            	timer.stop();
+    		}
+	    }
+        
     }
 	
 	private void scoreBoard() {
