@@ -119,6 +119,7 @@ public class Panel extends JPanel{
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
         			invader.setX(-invader.getX()* 10);
+        			invader.setY(-invader.getY() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -132,6 +133,14 @@ public class Panel extends JPanel{
                 	eachInvader.moveHorizontally();
             	}
             }
+            if(invader.getY() >= 370) {
+            	JLabel gameOver = new JLabel("Game Over");
+            	gameOver.setForeground(Color.GREEN);
+            	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
+            	add(gameOver, BorderLayout.CENTER);
+            	repaint();
+            	timer.stop();
+            }
             else {
             	invader.move();
             }
@@ -141,6 +150,7 @@ public class Panel extends JPanel{
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
         			invader.setX(-invader.getX()* 10);
+        			invader.setY(-invader.getY() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -154,6 +164,14 @@ public class Panel extends JPanel{
                 	eachInvader.moveHorizontally();
             	}
             }
+            if(invader.getY() >= 370) {
+            	JLabel gameOver = new JLabel("Game Over");
+            	gameOver.setForeground(Color.GREEN);
+            	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
+            	add(gameOver, BorderLayout.CENTER);
+            	repaint();
+            	timer.stop();
+            }
             else {
             	invader.move();
             }
@@ -163,6 +181,7 @@ public class Panel extends JPanel{
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
         			invader.setX(-invader.getX() * 10);
+        			invader.setY(-invader.getY() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
@@ -175,6 +194,14 @@ public class Panel extends JPanel{
             		eachInvader.moveDown(12);
                 	eachInvader.moveHorizontally();
             	}
+            }
+            if(invader.getY() >= 370) {
+            	JLabel gameOver = new JLabel("Game Over");
+            	gameOver.setForeground(Color.GREEN);
+            	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
+            	add(gameOver, BorderLayout.CENTER);
+            	repaint();
+            	timer.stop();
             }
             else {
             	invader.move();;
