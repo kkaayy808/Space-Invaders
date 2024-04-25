@@ -29,6 +29,7 @@ public class Panel extends JPanel{
 	private Missile missile;
 	private int scoreAmt = 0;
 	private JLabel score;
+	private JLabel gameOver;
 		
 	public Panel() {		
 		setPreferredSize(new Dimension(500, 400));
@@ -36,7 +37,11 @@ public class Panel extends JPanel{
 		
 		setLayout(new BorderLayout());
 		
-		
+		gameOver = new JLabel("Game Over");
+    	gameOver.setForeground(Color.GREEN);
+    	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
+    	add(gameOver, BorderLayout.CENTER);
+    	gameOver.setVisible(false);
 		
 		base = new Base(225,350);
 		topInvaders = new ArrayList<>();
@@ -134,11 +139,7 @@ public class Panel extends JPanel{
             	}
             }
             if(invader.getY() >= 370) {
-            	JLabel gameOver = new JLabel("Game Over");
-            	gameOver.setForeground(Color.GREEN);
-            	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
-            	add(gameOver, BorderLayout.CENTER);
-            	repaint();
+            	gameOver.setVisible(true);
             	timer.stop();
             }
             else {
@@ -165,11 +166,7 @@ public class Panel extends JPanel{
             	}
             }
             if(invader.getY() >= 370) {
-            	JLabel gameOver = new JLabel("Game Over");
-            	gameOver.setForeground(Color.GREEN);
-            	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
-            	add(gameOver, BorderLayout.CENTER);
-            	repaint();
+            	gameOver.setVisible(true);
             	timer.stop();
             }
             else {
@@ -196,11 +193,7 @@ public class Panel extends JPanel{
             	}
             }
             if(invader.getY() >= 370) {
-            	JLabel gameOver = new JLabel("Game Over");
-            	gameOver.setForeground(Color.GREEN);
-            	gameOver.setHorizontalAlignment(SwingConstants.CENTER);
-            	add(gameOver, BorderLayout.CENTER);
-            	repaint();
+            	gameOver.setVisible(true);
             	timer.stop();
             }
             else {
