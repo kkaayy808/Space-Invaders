@@ -177,12 +177,12 @@ public class Panel extends JPanel{
         for (InvaderBottom invader : bottomInvaders) {
         	if(missile != null && missile.getX() >= invader.getX() && missile.getX() <= invader.getX() + 35) {
         		if(missile.getY() >= invader.getY() && missile.getY() <= invader.getY() + 35) {
-        			invader.setX(-invader.getX() * 10);
-        			invader.setY(-invader.getY() * 10);
         			missile = null;
         			invader.gotHit();
         			scoreAmt += invader.getPoints();
         			scoreBoard();
+        			invader.setX(-invader.getX() * 10);
+        			invader.setY(-invader.getY() * 10);
         		}
         	}
             if(invader.hitsSide(500)) {

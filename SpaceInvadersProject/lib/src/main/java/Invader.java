@@ -38,6 +38,9 @@ public abstract class Invader extends Ship{
 	}
 	
 	protected Image getCurrentImage() {
+		if(shipHit() == true) {
+			return invaderHit;
+		}
 		return alternate ? b : a;
 	}
 	
