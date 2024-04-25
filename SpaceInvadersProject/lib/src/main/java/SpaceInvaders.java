@@ -47,7 +47,7 @@ public class SpaceInvaders extends JFrame{
 		var newGame = game.add("New Game");
 		
 		newGame.addActionListener(e -> {
-			 Panel gamePanel = (Panel) getContentPane().getComponent(0); //this does not work :(((
+			 Panel gamePanel = (Panel) getContentPane().getComponent(0); //this does not work :((( does now
 			 gamePanel.restartGame();
 		});
 		
