@@ -118,6 +118,10 @@ The scoreboard is displayed using a Swing JLabel and updated when the player's s
 5. Run the class containing the game's main() method.
 6. Use the arrow keys and spacebar to play.
 
+## Demo
+
+![Space Invaders Demo](spaceInvadersDemo.gif)
+
 ## Key Learning Objectives
 
 - Java object-oriented programming
